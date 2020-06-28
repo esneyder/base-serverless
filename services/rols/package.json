@@ -19,7 +19,8 @@
     "@middy/http-json-body-parser": "^1.0.0-alpha.43",
     "@middy/http-response-serializer": "^1.0.0-alpha.43",
     "@middy/validator": "^1.0.0",
-    "http-errors": "^1.7.3"
+    "http-errors": "^1.7.3",
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "aws-sdk": "^2.528.0",

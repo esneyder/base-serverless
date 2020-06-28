@@ -12,10 +12,10 @@ provider:
   deploymentBucket: ${file(${self:custom.relativePathToCommon}/env.yml):${opt:stage, self:provider.stage}.deploy.BUCKET}
   environment:
     DATABASE: ${file(${self:custom.relativePathToCommon}/env.yml):${opt:stage, self:provider.stage}.database.SERVER}
-    JWT_SECRET: ${file(${self:custom.relativePathToCommon}/env.yml):${opt:stage, self:provider.stage}.database.JWT_SECRET} 
+    JWT_SECRET: ${file(${self:custom.relativePathToCommon}/env.yml):${opt:stage, self:provider.stage}.database.JWT_SECRET}
   iamRoleStatements:
     - Effect: Allow
-      Action: 
+      Action:
         - logs:CreateLogGroup,
         - logs:CreateLogStream,
         - logs:PutLogEvents,
@@ -32,7 +32,7 @@ plugins:
   - serverless-offline
 
 custom:
-  relativePathToCommon: '../../lib/serverless/common'
+  relativePathToCommon: "../../lib/serverless/common"
   # env: ${file(${self:custom.relativePathToCommon}/env.yml)}
   # prefixes: ${file(${self:custom.relativePathToCommon}/prefixes.yml)}
   stage: ${opt:stage, self:provider.stage}
@@ -46,13 +46,7 @@ functions:
           path: users
           method: get
           cors: true
-  create:
-    handler: handlers/create.default
-    events:
-      - http:
-          path: users
-          method: post
-          cors: true
+
   get:
     handler: handlers/get.default
     events:
@@ -60,6 +54,7 @@ functions:
           path: users/{id}
           method: get
           cors: true
+
   update:
     handler: handlers/update.default
     events:
@@ -67,6 +62,7 @@ functions:
           path: users/{id}
           method: put
           cors: true
+
   delete:
     handler: handlers/delete.default
     events:

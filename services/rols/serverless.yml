@@ -39,8 +39,6 @@ custom:
   webpack: ${file(${self:custom.relativePathToCommon}/common.yml):webpack}
 
 functions:
-  verify-token:
-    handler: ../_auth/middleware/verifyToken.handler
   list:
     handler: handlers/list.default
     events:
@@ -48,7 +46,7 @@ functions:
           path: rols
           method: get
           cors: true
-          authorizer: verify-token
+
   create:
     handler: handlers/create.default
     events:
@@ -56,7 +54,7 @@ functions:
           path: rols
           method: post
           cors: true
-          authorizer: verify-token
+
   get:
     handler: handlers/get.default
     events:
@@ -64,7 +62,7 @@ functions:
           path: rols/{id}
           method: get
           cors: true
-          authorizer: verify-token
+
   update:
     handler: handlers/update.default
     events:
@@ -72,7 +70,7 @@ functions:
           path: rols/{id}
           method: put
           cors: true
-          authorizer: verify-token
+
   delete:
     handler: handlers/delete.default
     events:
@@ -80,4 +78,3 @@ functions:
           path: rols/{id}
           method: delete
           cors: true
-          authorizer: verify-token

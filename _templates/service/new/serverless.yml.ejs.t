@@ -42,8 +42,8 @@ custom:
   webpack: ${file(${self:custom.relativePathToCommon}/common.yml):webpack}
 
 functions:
-  verify-token:
-    handler: ../_auth/middleware/verifyToken.handler
+  #verify-token:
+    #handler: ../_auth/middleware/verifyToken.handler
   list:
     handler: handlers/list.default
     events:
