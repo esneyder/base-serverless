@@ -19,7 +19,8 @@
     "helmet": "^3.22.0",
     "hygen": "^5.0.3",
     "mongoose": "^5.9.14",
-    "serverless-http": "^2.4.1"
+    "serverless-http": "^2.4.1",
+    "typegoose-cursor-pagination": "^1.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

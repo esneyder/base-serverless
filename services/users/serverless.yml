@@ -1,7 +1,4 @@
----
-to: services/<%= h.changeCase.paramCase(name) %>/serverless.yml
----
-service: <%= h.changeCase.paramCase(name) %>
+service: users
 
 provider:
   name: aws
@@ -42,45 +39,38 @@ custom:
   webpack: ${file(${self:custom.relativePathToCommon}/common.yml):webpack}
 
 functions:
-  verify-token:
-    handler: ../_auth/middleware/verifyToken.handler
   list:
     handler: handlers/list.default
     events:
       - http:
-          path: <%= h.changeCase.paramCase(name) %>
+          path: users
           method: get
           cors: true
-          authorizer: verify-token
   create:
     handler: handlers/create.default
     events:
       - http:
-          path: <%= h.changeCase.paramCase(name) %>
+          path: users
           method: post
           cors: true
-          authorizer: verify-token
   get:
     handler: handlers/get.default
     events:
       - http:
-          path: <%= h.changeCase.paramCase(name) %>/{id}
+          path: users/{id}
           method: get
           cors: true
-          authorizer: verify-token
   update:
     handler: handlers/update.default
     events:
       - http:
-          path: <%= h.changeCase.paramCase(name) %>/{id}
+          path: users/{id}
           method: put
           cors: true
-          authorizer: verify-token
   delete:
     handler: handlers/delete.default
     events:
       - http:
-          path: <%= h.changeCase.paramCase(name) %>/{id}
+          path: users/{id}
           method: delete
           cors: true
-          authorizer: verify-token

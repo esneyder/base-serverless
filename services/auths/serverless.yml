@@ -1,0 +1,63 @@
+service: auths
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  endpointType: REGIONAL
+  memorySize: ${file(${self:custom.relativePathToCommon}/common.yml):memorySize}
+  timeout: 30
+  tracing:
+    lambda: true
+    apiGateway: true
+  deploymentBucket: ${file(${self:custom.relativePathToCommon}/env.yml):${opt:stage, self:provider.stage}.deploy.BUCKET}
+  environment:
+    DATABASE: ${file(${self:custom.relativePathToCommon}/env.yml):${opt:stage, self:provider.stage}.database.SERVER}
+    JWT_SECRET: ${file(${self:custom.relativePathToCommon}/env.yml):${opt:stage, self:provider.stage}.database.JWT_SECRET}
+    LARGE_EXPIRE: ${file(${self:custom.relativePathToCommon}/env.yml):${opt:stage, self:provider.stage}.expire.LARGE_EXPIRE}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - logs:CreateLogGroup,
+        - logs:CreateLogStream,
+        - logs:PutLogEvents,
+        - logs:DescribeLogStreams
+      Resource: "arn:aws:logs:*:*:*"
+
+package:
+  individually: true
+  exclude:
+    - .git/**
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+custom:
+  relativePathToCommon: "../../lib/serverless/common"
+  # env: ${file(${self:custom.relativePathToCommon}/env.yml)}
+  # prefixes: ${file(${self:custom.relativePathToCommon}/prefixes.yml)}
+  stage: ${opt:stage, self:provider.stage}
+  webpack: ${file(${self:custom.relativePathToCommon}/common.yml):webpack}
+
+functions:
+  login:
+    handler: handlers/login.default
+    events:
+      - http:
+          path: auths/login
+          method: post
+          cors: true
+  admin:
+    handler: handlers/admin.default
+    events:
+      - http:
+          path: auths/admin
+          method: post
+          cors: true
+  client:
+    handler: handlers/client.default
+    events:
+      - http:
+          path: auths/client
+          method: post
+          cors: true
