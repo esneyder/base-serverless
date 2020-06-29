@@ -43,7 +43,7 @@ custom:
 
 functions:
   #verify-token:
-    #handler: ../_auth/middleware/verifyToken.handler
+    #handler: ../core/middleware/verifyToken.handler
   list:
     handler: handlers/list.default
     events:
@@ -51,7 +51,7 @@ functions:
           path: <%= h.changeCase.paramCase(name) %>
           method: get
           cors: true
-          authorizer: verify-token
+          #authorizer: verify-token
   create:
     handler: handlers/create.default
     events:
@@ -59,7 +59,7 @@ functions:
           path: <%= h.changeCase.paramCase(name) %>
           method: post
           cors: true
-          authorizer: verify-token
+          #authorizer: verify-token
   get:
     handler: handlers/get.default
     events:
@@ -67,7 +67,7 @@ functions:
           path: <%= h.changeCase.paramCase(name) %>/{id}
           method: get
           cors: true
-          authorizer: verify-token
+          #authorizer: verify-token
   update:
     handler: handlers/update.default
     events:
@@ -75,7 +75,7 @@ functions:
           path: <%= h.changeCase.paramCase(name) %>/{id}
           method: put
           cors: true
-          authorizer: verify-token
+          #authorizer: verify-token
   delete:
     handler: handlers/delete.default
     events:
@@ -83,4 +83,4 @@ functions:
           path: <%= h.changeCase.paramCase(name) %>/{id}
           method: delete
           cors: true
-          authorizer: verify-token
+          #authorizer: verify-token
