@@ -12,7 +12,7 @@ import jsonBodyParser from "@middy/http-json-body-parser";
 import { BadRequest,InternalServerError } from "http-errors";
 import { success, notFound } from "../../../core/utils/response";
 import { update<%= h.changeCase.pascal(h.inflection.singularize(name)) %> } from "../../../core/controllers/<%= h.changeCase.paramCase(name) %>/<%= h.inflection.singularize(name) %>.controller";
-const handler = async (event, context) => {
+const handler = async (event, context,callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
   if (!event.pathParameters.id) {
     throw new BadRequest(JSON.stringify({ message: "Bad request" }));

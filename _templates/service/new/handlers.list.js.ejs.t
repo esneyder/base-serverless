@@ -12,7 +12,7 @@ import jsonBodyParser from "@middy/http-json-body-parser";
 import { BadRequest,InternalServerError } from "http-errors";
 import { success, notFound } from "../../../core/utils/response";
 import { get<%= h.changeCase.pascal(name) %> } from "../../../core/controllers/<%= h.changeCase.paramCase(name) %>/<%= h.inflection.singularize(name) %>.controller";
-const handler = async (event, context) => {
+const handler = async (event, context,callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
   try {
       const { next, previous } = event.queryStringParameters;
