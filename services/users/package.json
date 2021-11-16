@@ -22,7 +22,7 @@
     "http-errors": "^1.7.3"
   },
   "devDependencies": {
-    "aws-sdk": "^2.528.0",
+    "aws-sdk": "^2.814.0",
     "serverless-offline": "^6.0.0-alpha.26",
     "serverless-webpack": "^5.3.1"
   }

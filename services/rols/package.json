@@ -23,7 +23,7 @@
     "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
-    "aws-sdk": "^2.528.0",
+    "aws-sdk": "^2.814.0",
     "serverless-offline": "^6.0.0-alpha.26",
     "serverless-webpack": "^5.3.1"
   }
